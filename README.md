@@ -17,12 +17,81 @@ composer require ajadipaul/laravel-payment-hub
 ## Usage
 
 ```php
-API keys to the .env file
+//  API keys to the .env file
 
 PAYSTACK_PUBLIC_KEY=your_paystack_public_key
 PAYSTACK_SECRET_KEY=your_paystack_secret_key
 FLUTTERWAVE_PUBLIC_KEY=your_flutterwave_public_key
 FLUTTERWAVE_SECRET_KEY=your_flutterwave_secret_key
+
+// Publish the configuration file to your application
+php artisan vendor:publish --provider="Ajadipaul\LaravelPaymentHub\LaravelPaymentHubServiceProvider"
+
+// Application Code Usage
+
+class PaymentController extends Controller
+{
+    protected $paystack;
+    protected $flutterwave;
+
+    public function __construct()
+    {
+        $paystackConfig = config('paymenthub.paystack');
+        $flutterwaveConfig = config('paymenthub.flutterwave');
+
+        $this->paystack = new PaystackService();
+        $this->paystack->initialize($paystackConfig);
+
+        $this->flutterwave = new FlutterwaveService();
+        $this->flutterwave->initialize($flutterwaveConfig);
+    }
+
+    public function chargeWithPaystack()
+    {
+        $data = [
+            'amount' => 5000, // Amount in Naira
+            'email' => 'user@example.com',
+            'callback_url' => route('payment.callback'),
+        ];
+
+        $response = $this->paystack->charge($data);
+
+        if ($response['status'] === 'success') {
+            return redirect($response['authorization_url']);
+        }
+
+        return redirect()->back()->withErrors($response['message']);
+    }
+
+    public function chargeWithFlutterwave()
+    {
+        $data = [
+            'amount' => 5000, // Amount in Naira
+            'currency' => 'NGN',
+            'email' => 'user@example.com',
+            'callback_url' => route('payment.callback'),
+        ];
+
+        $response = $this->flutterwave->charge($data);
+
+        if ($response['status'] === 'success') {
+            return redirect($response['link']);
+        }
+
+        return redirect()->back()->withErrors($response['message']);
+    }
+
+    public function verifyTransaction($transactionId)
+    {
+        $response = $this->paystack->verify($transactionId);
+
+        if ($response['status'] === 'success') {
+            // Handle successful verification, e.g., updating order status
+        } else {
+            // Handle verification failure
+        }
+    }
+}
 
 ```
 
