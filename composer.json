@@ -9,7 +9,7 @@
         "laravel-payment-hub"
     ],
     "homepage": "https://github.com/ajadi473/laravel-payment-hub",
-    "license": "GNU AGPLv",
+    "license": "AGPL-3.0-or-later",
     "type": "library",
     "authors": [
         {
@@ -40,7 +40,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
