@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ajadipaul/laravel-payment-hub.svg?style=flat-square)](https://packagist.org/packages/ajadipaul/laravel-payment-hub)
 ![GitHub Actions](https://github.com/ajadipaul/laravel-payment-hub/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+A comprehensive and versatile package designed to integrate multiple payment gateways into your Laravel application. This package supports a wide array of popular payment options. With Laravel Payment Hub, you can seamlessly handle payments, ensuring a smooth and unified experience for both developers and users. The package offers a standardized interface for all supported gateways, simplifying the process of switching between different payment providers without altering your codebase significantly. Enhance your Laravel application's payment capabilities with ease and flexibility using Laravel Payment Hub.
 
 ## Installation
 
@@ -17,7 +17,13 @@ composer require ajadipaul/laravel-payment-hub
 ## Usage
 
 ```php
-// Usage description here
+API keys to the .env file
+
+PAYSTACK_PUBLIC_KEY=your_paystack_public_key
+PAYSTACK_SECRET_KEY=your_paystack_secret_key
+FLUTTERWAVE_PUBLIC_KEY=your_flutterwave_public_key
+FLUTTERWAVE_SECRET_KEY=your_flutterwave_secret_key
+
 ```
 
 ### Testing
