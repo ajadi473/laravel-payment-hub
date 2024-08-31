@@ -1,0 +1,58 @@
+{
+    "name": "ajadipaul/laravel-payment-hub",
+    "description": "A comprehensive and versatile package designed to integrate multiple payment gateways into your Laravel application. This package supports a wide array of popular payment options. With Laravel Payment Hub, you can seamlessly handle payments, ensuring a smooth and unified experience for both developers and users. The package offers a standardized interface for all supported gateways, simplifying the process of switching between different payment providers without altering your codebase significantly. Enhance your Laravel application's payment capabilities with ease and flexibility using Laravel Payment Hub.",
+    "keywords": [
+        "ajadipaul",
+        "flutterwave",
+        "paystack",
+        "monnify",
+        "laravel-payment-hub"
+    ],
+    "homepage": "https://github.com/ajadi473/laravel-payment-hub",
+    "license": "GNU AGPLv",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ajadi Paul",
+            "email": "ajadi.ololade@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ajadipaul\\LaravelPaymentHub\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ajadipaul\\LaravelPaymentHub\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ajadipaul\\LaravelPaymentHub\\LaravelPaymentHubServiceProvider"
+            ],
+            "aliases": {
+                "LaravelPaymentHub": "Ajadipaul\\LaravelPaymentHub\\LaravelPaymentHubFacade"
+            }
+        }
+    }
+}
